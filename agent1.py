@@ -2,6 +2,7 @@ import maze_generator
 import maze_check
 import ghosts
 import globalVariables
+import datetime
 
 output = []
 no_of_ghosts = 1
@@ -25,8 +26,9 @@ def run_agent1(no_of_ghosts):
 
 # with open("output.txt","a") as o:
 #     o.write("Agent 1"
+
 # while True:
-for i in range(0,501):
+for i in range(0,500):
     for _ in range(0,100):
         output.append(run_agent1(no_of_ghosts))
     with open("output.txt","a") as o:
@@ -35,6 +37,11 @@ for i in range(0,501):
         o.write("No of Mazes = 100\n")
         o.write("Successfull tries = {}\n" .format(globalVariables.success_count))
         o.write("{}\n".format(output))
+    with open("plotGraph.txt","a") as file:
+        file.write("{}\t".format(no_of_ghosts))
+        file.write("{}\n".format(globalVariables.success_count))
+
+
     no_of_ghosts = no_of_ghosts + 1
     output.clear()
     # if not globalVariables.success_count:
