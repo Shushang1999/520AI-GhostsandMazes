@@ -1,7 +1,7 @@
 import collections
 import maze_generator
 
-wall, path, goal, player, ghosts = 0,1,2,5,10
+wall, path, goal = 0,1,2
 width, height = 51, 51
 
 def bfs(grid, start):

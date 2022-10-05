@@ -1,6 +1,5 @@
 import random
 import maze_generator
-import matplotlib.pyplot as plt
 
 def spawn_ghosts(maze,no_of_ghosts):
     ghost_coordinates = []
@@ -12,7 +11,7 @@ def spawn_ghosts(maze,no_of_ghosts):
                 gx,gy = random.randint(0,50),random.randint(0,50)
             else:
                 flag = False
-        ghost_coordinates.append([gx,gy])
+        ghost_coordinates.append((gx,gy))
         if gx == 50 and gy == 50:
             maze[gx][gy] = 8
         else:
@@ -91,12 +90,12 @@ def move_ghosts(maze,ghosts_coordinates):
             else:
                 x2,y2 = x,y
             
-        ghosts_coordinates[i] = [x2,y2]
+        ghosts_coordinates[i] = (x2,y2)
     # print(maze)
     # print(ghosts_coordinates)  
     return(maze,ghosts_coordinates)
         
-maze = maze_generator.maze_generator()
+# maze = maze_generator.maze_generator()
 # # move_ghosts([[0,0]])
 
 
