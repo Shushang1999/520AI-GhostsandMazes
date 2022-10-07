@@ -1,22 +1,6 @@
-import collections
 from queue import PriorityQueue
 
-wall, path, goal = 0,1,2
-width, height = 51,51
-
-def bfs(grid, start):
-    queue = collections.deque([[start]])
-    visited = set([start])
-    while queue:
-        path = queue.popleft()
-        x, y = path[-1]
-        if grid[x][y] == goal:
-            return path
-        for x2, y2 in ((x+1,y), (x-1,y), (x,y+1), (x,y-1)):
-            if 0 <= x2 < width and 0 <= y2 < height and grid[x2][y2] != wall and (x2, y2) not in visited:
-                queue.append(path + [(x2, y2)])
-                visited.add((x2, y2))
-
+h,w = 51,51
 def heuristic(a, b):
     (x1, y1) = a
     (x2, y2) = b
@@ -24,8 +8,7 @@ def heuristic(a, b):
     return abs(x1 - x2) + abs(y1 - y2)
 
 
-def a_star_search(maze):
-    start,goal = (0,0),(50,50)
+def a_star_search(maze, start,goal):
     frontier = PriorityQueue()
     frontier.put(start, 0)
     came_from = {start: None}
@@ -38,7 +21,7 @@ def a_star_search(maze):
             break
 
         for x2,y2 in ((x+1,y),(x-1,y),(x,y-1),(x,y+1)):
-            if x2 < 0 or x2 >= height or y2 < 0 or y2 >= width or maze[x2][y2] == 0:
+            if x2 < 0 or x2 >= h or y2 < 0 or y2 >= w or maze[x2][y2] == 0:
                 continue
             new_cost = cost_so_far[current] + (abs(x-x2)+ abs(y-y2))
             if ((x2,y2)) not in cost_so_far or new_cost < cost_so_far[(x2,y2)]:
@@ -56,4 +39,7 @@ def a_star_search(maze):
         path.append(current)
     path.reverse()
     return path
+
+
+end = (50,50)
 

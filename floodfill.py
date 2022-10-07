@@ -1,19 +1,5 @@
-# import maze_generator
-import numpy as np
-import random
 
-# maze= np.empty([3,3],dtype=int)
-# for i in range(0,3):
-#     for j in range(0,3):
-#         maze[i][j] = random.choice([0,1])
-# # maze = maze_generator.maze_generator()
-# maze[0][0] = 1
-# print(maze)
-# # maze = np.array([[1,1,1],
-# #                   [1,0,1],
-# #                   [1,1,1]  ])
-
-height,width = 3,3
+height,width = 51,51
 seen = set()
 def flood_fill(maze,current):
     x,y = current
