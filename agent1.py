@@ -28,10 +28,11 @@ def run_agent1(no_of_ghosts):
 #     o.write("Agent 1"
 
 # while True:
-for i in range(0,500):
+
+while no_of_ghosts <= 500:
     for _ in range(0,100):
         output.append(run_agent1(no_of_ghosts))
-    with open("output.txt","a") as o:
+    with open("output_agent1_floodfill.txt","a") as o:
         o.write("Agent 1\n")
         o.write("No of Ghosts = {}\n" .format(no_of_ghosts))
         o.write("No of Mazes = 100\n")
@@ -47,3 +48,4 @@ for i in range(0,500):
     # if not globalVariables.success_count:
     #     break
     globalVariables.success_count = 0
+

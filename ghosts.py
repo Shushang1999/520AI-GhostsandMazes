@@ -1,14 +1,16 @@
 import random
-import maze_generator
+import floodfill
 
 def spawn_ghosts(maze,no_of_ghosts):
+    reachable_coordinates = floodfill.flood_fill(maze,(0,0))
+    reachable_coordinates_list = list(reachable_coordinates)
     ghost_coordinates = []
     for _ in range(0,no_of_ghosts):
-        gx,gy = random.randint(0,50),random.randint(0,50)
+        gx,gy = random.choice(reachable_coordinates_list)
         flag = True
         while flag:
             if gx == 0 and gy == 0 or maze[gx][gy] == 0 or [gx,gy] in ghost_coordinates:
-                gx,gy = random.randint(0,50),random.randint(0,50)
+                gx,gy = random.choice(reachable_coordinates_list)
             else:
                 flag = False
         ghost_coordinates.append((gx,gy))
@@ -16,11 +18,8 @@ def spawn_ghosts(maze,no_of_ghosts):
             maze[gx][gy] = 8
         else:
             maze[gx][gy] = 10
-    # print(maze)
-    # print(ghost_coordinates)
     return(maze,ghost_coordinates)
 
-# print(spawn_ghosts(1))
 
 def move_ghosts(maze,ghosts_coordinates):
     for i in range(0,len(ghosts_coordinates)):
@@ -91,15 +90,4 @@ def move_ghosts(maze,ghosts_coordinates):
                 x2,y2 = x,y
             
         ghosts_coordinates[i] = (x2,y2)
-    # print(maze)
-    # print(ghosts_coordinates)  
     return(maze,ghosts_coordinates)
-        
-# maze = maze_generator.maze_generator()
-# # move_ghosts([[0,0]])
-
-
-# maze,ghosts_coordinates = spawn_ghosts(maze,50)
-
-# for _ in range(0,10000):
-#     move_ghosts(maze,ghosts_coordinates)
