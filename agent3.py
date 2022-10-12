@@ -130,7 +130,7 @@ def agent3(no_of_ghosts):
                     
 def callAgent3(ghost_start,ghost_end):
     for g in range(ghost_start,ghost_end,5):
-        for _ in range(0,1):
+        for _ in range(0,50):
             output.append(agent3(g))
         with open("output_agent3_{}".format(ghost_end),"a") as o:
             o.write("Agent 1\n")
