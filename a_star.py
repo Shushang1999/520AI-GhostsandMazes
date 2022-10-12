@@ -1,6 +1,4 @@
 import collections
-import maze_generator
-import ghosts
 from queue import PriorityQueue
 
 wall, path, goal = 0,1,2
@@ -27,8 +25,8 @@ def heuristic(a, b):
     return abs(x1 - x2) + abs(y1 - y2)
 
 
-def a_star_search(maze):
-    start,goal = (0,0),(50,50)
+def a_star_search(maze,start):
+    goal = (50,50)
     frontier = PriorityQueue()
     frontier.put(start, 0)
     came_from = {start: None}
@@ -62,6 +60,7 @@ def a_star_search(maze):
 
 # maze = maze_generator.maze_generator()
 # maze,ghost_location = ghosts.spawn_ghosts(maze,50)
+# print(a_star_search(maze,(0,0)))
 # count = 0
 # for _ in range(1000):
 #     maze,ghost_location = ghosts.move_ghosts(maze,ghost_location)

@@ -22,16 +22,18 @@ def run_agent1(no_of_ghosts):
             return("Success")
         else:
             grid, ghosts_coordinate = ghosts.move_ghosts(grid,ghosts_coordinate)
+            if grid[x2][y2] == 8 or grid[x2][y2] >= 10:
+                return ("Failed")
 
 # with open("output.txt","a") as o:
 #     o.write("Agent 1"
 
 # while True:
 
-while no_of_ghosts <= 200:
+while no_of_ghosts <= 500:
     for _ in range(0,100):
         output.append(run_agent1(no_of_ghosts))
-    with open("output_agent1_floodfill.txt","a") as o:
+    with open("output_agent1_new.txt","a") as o:
         o.write("Agent 1\n")
         o.write("No of Ghosts = {}\n" .format(no_of_ghosts))
         o.write("No of Mazes = 100\n")
@@ -39,7 +41,7 @@ while no_of_ghosts <= 200:
         o.write("{}\n".format(output))
 
 
-    no_of_ghosts = no_of_ghosts + 1
+    no_of_ghosts = no_of_ghosts + 5
     output.clear()
     # if not globalVariables.success_count:
     #     break

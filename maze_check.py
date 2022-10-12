@@ -1,5 +1,7 @@
 import collections
 from queue import PriorityQueue
+import maze_generator
+import ghosts
 
 wall, path, goal = 0,1,2
 width, height = 51,51
@@ -56,4 +58,9 @@ def a_star_search(maze):
         path.append(current)
     path.reverse()
     return path
+
+
+# maze = maze_generator.maze_generator()
+# maze,ghost_location = ghosts.spawn_ghosts(maze,50)
+# print(a_star_search(maze))
 
