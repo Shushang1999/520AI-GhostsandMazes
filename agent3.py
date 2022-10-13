@@ -6,7 +6,7 @@ import ghosts
 import globalVariables
 import math
 from datetime import datetime
-import threading
+import multiprocessing
 
 output = []
 
@@ -129,18 +129,18 @@ def agent3(no_of_ghosts):
                 return ("Failed")
                     
 def callAgent3(ghost_start,ghost_end):
-    for g in range(ghost_start,ghost_end,5):
-        for _ in range(0,50):
+    for g in range(ghost_start,ghost_end,10):
+        for _ in range(0,1):
             output.append(agent3(g))
-        with open("output_agent3_{}".format(ghost_end),"a") as o:
-            o.write("Agent 1\n")
+        with open("output_agent3_{}.txt".format(ghost_end),"a") as o:
+            o.write("Agent 3\n")
             o.write("No of Ghosts = {}\n" .format(g))
-            o.write("No of Mazes = 100\n")
+            o.write("No of Mazes = 1\n")
             o.write("Successfull tries = {}\n" .format(output.count("Success")))
             o.write("{}\n".format(output))
 
 
-    output.clear()
+        output.clear()
     # if not globalVariables.success_count:
     #     break
         
@@ -148,36 +148,18 @@ def callAgent3(ghost_start,ghost_end):
 if __name__ == "__main__":
     time1 = datetime.now()
     print(time1)
-    t1 = threading.Thread(target=callAgent3,args=(1,5))
-    t2 = threading.Thread(target=callAgent3,args=(6,10))
-    t3 = threading.Thread(target=callAgent3,args=(11,15))
-    t4 = threading.Thread(target=callAgent3,args=(16,20))
-    t5 = threading.Thread(target=callAgent3,args=(21,25))
-    t6 = threading.Thread(target=callAgent3,args=(26,30))
-    t7 = threading.Thread(target=callAgent3,args=(31,35))
-    t8 = threading.Thread(target=callAgent3,args=(36,40))
-    t9 = threading.Thread(target=callAgent3,args=(41,45))
-    t10 = threading.Thread(target=callAgent3,args=(46,50))
-    t1.start()
-    t2.start()
-    t3.start()
-    t4.start()
-    t5.start()
-    t6.start()
-    t7.start()
-    t8.start()
-    t9.start()
-    t10.start()
-    t1.join()
-    t2.join()
-    t3.join()
-    t4.join()
-    t5.join()
-    t6.join()
-    t7.join()
-    t8.join()
-    t9.join()
-    t10.join()
+    p1 = multiprocessing.Process(target=callAgent3,args=(1,20))
+    p2 = multiprocessing.Process(target=callAgent3,args=(21,40))
+    p3 = multiprocessing.Process(target=callAgent3,args=(41,60))
+    p4 = multiprocessing.Process(target=callAgent3,args=(61,80))
+    p1.start()
+    p2.start()
+    p3.start()
+    p4.start()
+    p1.join()
+    p2.join()
+    p3.join()
+    p4.join()
     print("Done")
     time2 = datetime.now()
     print(time2)

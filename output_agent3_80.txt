@@ -1,0 +1,10 @@
+Agent 1
+No of Ghosts = 61
+No of Mazes = 1
+Successfull tries = 0
+['Failed']
+Agent 1
+No of Ghosts = 71
+No of Mazes = 1
+Successfull tries = 0
+['Failed', 'Failed']
