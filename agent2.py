@@ -56,8 +56,8 @@ def run_agent2(grid,ghosts_coordinate):
                 
 # print(run_agent2(200))  
 if __name__ == "__main__": 
-    t1 = datetime.now()
-    while no_of_ghosts <= 401:
+    # t1 = datetime.now()
+    while no_of_ghosts <= 300:
         path = None
         while(not path):
             grid = maze_generator.maze_generator()  # Generates Maze
@@ -65,7 +65,7 @@ if __name__ == "__main__":
         grid,ghosts_coordinate = ghosts.spawn_ghosts(grid,no_of_ghosts)  # spawn ghosts
         for _ in range(0,100):                                           # Number of mazes
             output.append(run_agent2(grid,ghosts_coordinate))            # Appending the result
-        with open("output_2_new.txt","a") as o:
+        with open("./Results/output_agent2.txt","a") as o:
             o.write("Agent 2\n")
             o.write("No of Ghosts = {}\n" .format(no_of_ghosts))
             o.write("No of Mazes = 100\n")
@@ -81,9 +81,9 @@ if __name__ == "__main__":
         # # if not globalVariables.success_count:
         # #     break
         globalVariables.success_count = 0
-    t2 = datetime.now()
-    with open("output_2_new.txt","a") as o:
-            o.write("Time Started = {}\n".format(t1))
-            o.write("Time Ended = {}\n".format(t2))
-            o.write("Total Time = {}\n".format(t2-t1))
+    # t2 = datetime.now()
+    # with open("output_2_new.txt","a") as o:
+    #         o.write("Time Started = {}\n".format(t1))
+    #         o.write("Time Ended = {}\n".format(t2))
+    #         o.write("Total Time = {}\n".format(t2-t1))
 
