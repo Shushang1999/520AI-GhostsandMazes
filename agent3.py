@@ -21,7 +21,7 @@ def agent3(no_of_ghosts):
     while True:
         # print(ghosts_coordinate)
         if current_co_ordinate in path_taken:
-            if(path_taken.count(current_co_ordinate) >= 10):
+            if(path_taken.count(current_co_ordinate) >= 20):
                 return("Hanged")
         path_taken.append(current_co_ordinate)
         # print(path_taken)
@@ -129,8 +129,8 @@ def agent3(no_of_ghosts):
                 return ("Failed")
                     
 def callAgent3(ghost_start,ghost_end):
-    for g in range(ghost_start,ghost_end,10):
-        for _ in range(0,1):
+    for g in range(ghost_start,ghost_end,20):
+        for _ in range(0,10):
             output.append(agent3(g))
         with open("output_agent3_{}.txt".format(ghost_end),"a") as o:
             o.write("Agent 3\n")
@@ -148,10 +148,10 @@ def callAgent3(ghost_start,ghost_end):
 if __name__ == "__main__":
     time1 = datetime.now()
     print(time1)
-    p1 = multiprocessing.Process(target=callAgent3,args=(1,20))
-    p2 = multiprocessing.Process(target=callAgent3,args=(21,40))
-    p3 = multiprocessing.Process(target=callAgent3,args=(41,60))
-    p4 = multiprocessing.Process(target=callAgent3,args=(61,80))
+    p1 = multiprocessing.Process(target=callAgent3,args=(11,20))
+    p2 = multiprocessing.Process(target=callAgent3,args=(31,40))
+    p3 = multiprocessing.Process(target=callAgent3,args=(51,60))
+    p4 = multiprocessing.Process(target=callAgent3,args=(71,80))
     p1.start()
     p2.start()
     p3.start()
