@@ -12,7 +12,7 @@ def bfs(grid, start):
     while queue:
         path = queue.popleft()
         x, y = path[-1]
-        if grid[x][y] == goal:
+        if grid[x][y] == goal or grid[x][y] == 8:
             return path
         for x2, y2 in ((x+1,y), (x-1,y), (x,y+1), (x,y-1)):
             if 0 <= x2 < width and 0 <= y2 < height and grid[x2][y2] != wall and (x2, y2) not in visited:

@@ -1,10 +1,10 @@
-Agent 3
+Agent 1
 No of Ghosts = 21
 No of Mazes = 1
-Successfull tries = 2
-['Failed', 'Failed', 'Success', 'Failed', 'Failed', 'Failed', 'Failed', 'Success', 'Failed', 'Failed']
-Agent 3
+Successfull tries = 0
+['Failed']
+Agent 1
 No of Ghosts = 31
 No of Mazes = 1
 Successfull tries = 0
-['Failed', 'Failed', 'Failed', 'Failed', 'Failed', 'Failed', 'Failed', 'Failed', 'Failed', 'Failed']
+['Failed', 'Failed']

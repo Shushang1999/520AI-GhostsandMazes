@@ -43,7 +43,5 @@ while no_of_ghosts <= 500:
 
     no_of_ghosts = no_of_ghosts + 5
     output.clear()
-    # if not globalVariables.success_count:
-    #     break
     globalVariables.success_count = 0
 
