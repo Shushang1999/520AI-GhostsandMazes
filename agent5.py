@@ -76,6 +76,7 @@ def agent5(no_of_ghosts):
                                     break
                             if blocked_ghosts_neighbor == False:
                                 x2,y2 = new_x,new_y
+                                path_taken_by_agent.append((x2,y2))
                                 if grid[x2][y2] == 8 or grid[x2][y2] >= 10:         # Checking If Agent Dead 
                                     return ("Failed")
                                 elif grid[x2][y2] == 2:
@@ -95,6 +96,7 @@ def agent5(no_of_ghosts):
                                         break
                                 if ghosts_neighbor == False:
                                     x2,y2 = new_x,new_y
+                                    path_taken_by_agent.append((x2,y2))
                                     if grid[x2][y2] == 8 or grid[x2][y2] >= 10:         # Checking If Agent Dead 
                                         return ("Failed")
                                     elif grid[x2][y2] == 2:
@@ -114,6 +116,7 @@ def agent5(no_of_ghosts):
                                         else:
                                             break
                                     x2,y2 = new_x,new_y
+                                    path_taken_by_agent.append((x2,y2))
                                     if grid[x2][y2] == 8 or grid[x2][y2] >= 10:         # Checking If Agent Dead 
                                         return ("Failed")
                                     elif grid[x2][y2] == 2:
