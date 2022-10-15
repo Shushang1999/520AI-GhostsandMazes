@@ -19,14 +19,12 @@ def agent3(no_of_ghosts):
     current_co_ordinate = (0,0)
     path_taken = []
     while True:
-        # print(ghosts_coordinate)
-        if current_co_ordinate in path_taken:
-            if(path_taken.count(current_co_ordinate) >= 20):
+        if current_co_ordinate in path_taken:              # Checking if current cell is visited before
+            if(path_taken.count(current_co_ordinate) >= 20):   # If the cell is visited more than 20 times the agent returns hanged state
                 return("Hanged")
         path_taken.append(current_co_ordinate)
-        # print(path_taken)
         x,y = current_co_ordinate
-        success_rate = {
+        success_rate = {                                    # Success rate of agent 2 simulations
             "left":0,
             "right":0,
             "up":0,
@@ -44,14 +42,14 @@ def agent3(no_of_ghosts):
                 x2,y2 = x+1,y
             else:
                 x2,y2 = x,y
-            for _ in range(3):
+            for _ in range(5):                                          # No of Simulations
                 if x2 < 0 or x2 >= 51 or y2 < 0 or y2 >= 51:
                     break
-                if (run_agent2(grid.copy(),ghosts_coordinate.copy()) == "Success"):
+                if (run_agent2(grid.copy(),ghosts_coordinate.copy()) == "Success"):    # If result of simulation is successfull increase counter
                     success_rate[key] = success_rate[key] + 1
-        max_survival = max(success_rate.values())
-        if max_survival == 0:
-            ## write code for running away
+        max_survival = max(success_rate.values())                                  # Extracting maximum success rate
+        if max_survival == 0:                                                      # If no simulations survived
+            # running away code
             min_dist = 0
             nearest_ghost = ()
             for ghost_loc in ghosts_coordinate:        #Finding Nearest Ghost
@@ -80,15 +78,15 @@ def agent3(no_of_ghosts):
             continue
         directions_possible = []
         no_of_moves = []
-        for dir,survival_rate in success_rate.items():
+        for dir,survival_rate in success_rate.items():      # Storing the number of times agent 2 was successfull the maximum
             if survival_rate == max_survival:
                 directions_possible.append(dir)
         # print(directions_possible)
-        if len(directions_possible)== 1:
+        if len(directions_possible)== 1:                 # If only one maximum available take that direction
             dir = directions_possible[0]
         else:
-            for dir in directions_possible:
-                if dir == "left":
+            for dir in directions_possible:                # If multiple maximum success rate available to break ties calculate the distance from the potential cell to the goal cell
+                if dir == "left":                          
                     x2,y2 = x,y-1
                 elif dir == "right":
                     x2,y2 = x,y+1
@@ -104,7 +102,7 @@ def agent3(no_of_ghosts):
                 else:
                     no_of_moves.append(0)
             # print(no_of_moves)
-            min_moves = min(no_of_moves)
+            min_moves = min(no_of_moves)                    # Take the direction that moves us closer to the goal cell
             dir = directions_possible[no_of_moves.index(min_moves)]
             # print(dir)
         if dir == "left":
@@ -121,7 +119,7 @@ def agent3(no_of_ghosts):
         if grid[x2][y2] == 8 or grid[x2][y2] >= 10:         # Checking If Agent Dead 
             return ("Failed")
         elif grid[x2][y2] == 2:
-            globalVariables.success_count = globalVariables.success_count + 1
+            globalVariables.success_count = globalVariables.success_count + 1   # Checking if Agent survived
             return("Success")
         else:
             grid, ghosts_coordinate = ghosts.move_ghosts(grid,ghosts_coordinate)
@@ -130,7 +128,7 @@ def agent3(no_of_ghosts):
                     
 def callAgent3(ghost_start,ghost_end):
     for g in range(ghost_start,ghost_end,20):
-        for _ in range(0,10):
+        for _ in range(0,10):                                  # Number of mazes
             output.append(agent3(g))
         with open("output_agent3_{}.txt".format(ghost_end),"a") as o:
             o.write("Agent 3\n")
@@ -147,8 +145,7 @@ def callAgent3(ghost_start,ghost_end):
 
 if __name__ == "__main__":
     time1 = datetime.now()
-    print(time1)
-    p1 = multiprocessing.Process(target=callAgent3,args=(11,20))
+    p1 = multiprocessing.Process(target=callAgent3,args=(11,20))     # Multiprocessing
     p2 = multiprocessing.Process(target=callAgent3,args=(31,40))
     p3 = multiprocessing.Process(target=callAgent3,args=(51,60))
     p4 = multiprocessing.Process(target=callAgent3,args=(71,80))
@@ -162,5 +159,4 @@ if __name__ == "__main__":
     p4.join()
     print("Done")
     time2 = datetime.now()
-    print(time2)
     print("Total Time ={}".format(time2-time1))

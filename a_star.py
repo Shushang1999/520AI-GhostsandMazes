@@ -58,21 +58,3 @@ def a_star_search(maze,start):
     path.reverse()
     return path
 
-# maze = maze_generator.maze_generator()
-# maze,ghost_location = ghosts.spawn_ghosts(maze,50)
-# print(a_star_search(maze,(0,0)))
-# count = 0
-# for _ in range(1000):
-#     maze,ghost_location = ghosts.move_ghosts(maze,ghost_location)
-#     path = a_star_search(maze)
-#     # print(path)
-#     # print(ghost_location)
-#     if path:
-#         count = count +1
-#         for c in path:
-#             if c in ghost_location:
-#                 print("Error in code")
-#                 print(c)
-# print(count)
-# plt.imshow(maze)
-# plt.show()

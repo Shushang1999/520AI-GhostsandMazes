@@ -4,7 +4,6 @@ import maze_check
 import ghosts
 import globalVariables
 import a_star
-from datetime import datetime
 
 output = []
 no_of_ghosts = 1
@@ -54,9 +53,8 @@ def run_agent2(grid,ghosts_coordinate):
                 return ("Failed")
             path = a_star.bfsGhostsInvisible(grid,(x2,y2))      # Check for valid Paths
                 
-# print(run_agent2(200))  
+
 if __name__ == "__main__": 
-    # t1 = datetime.now()
     while no_of_ghosts <= 300:
         path = None
         while(not path):
@@ -71,19 +69,9 @@ if __name__ == "__main__":
             o.write("No of Mazes = 100\n")
             o.write("Successfull tries = {}\n" .format(globalVariables.success_count))
             o.write("{}\n".format(output))
-        # with open("plotGraph.txt","a") as file:
-        #     file.write("{}\t".format(no_of_ghosts))
-        #     file.write("{}\n".format(globalVariables.success_count))
 
 
         no_of_ghosts = no_of_ghosts + 5
         output.clear()
-        # # if not globalVariables.success_count:
-        # #     break
         globalVariables.success_count = 0
-    # t2 = datetime.now()
-    # with open("output_2_new.txt","a") as o:
-    #         o.write("Time Started = {}\n".format(t1))
-    #         o.write("Time Ended = {}\n".format(t2))
-    #         o.write("Total Time = {}\n".format(t2-t1))
 

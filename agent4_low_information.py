@@ -23,24 +23,24 @@ def agent4(no_of_ghosts):
             potential_x,potential_y = point
             ghost_in_neighboring_cells = False
             for neighbor_x,neighbor_y in (potential_x+1,potential_y),(potential_x-1,potential_y),(potential_x,potential_y+1),(potential_x,potential_y-1),(potential_x,potential_y):
-                if neighbor_x < 0 or neighbor_x >= 51 or neighbor_y < 0 or neighbor_y >= 51:
+                if neighbor_x < 0 or neighbor_x >= 51 or neighbor_y < 0 or neighbor_y >= 51:     # If neighbor cell out of bounds
                     continue
-                if grid[neighbor_x][neighbor_y] == 8 or grid[neighbor_x][neighbor_y] >= 10:
+                if grid[neighbor_x][neighbor_y] == 8 or grid[neighbor_x][neighbor_y] >= 10:     # Checking whether the potential cell or its neighbors have any ghosts (Note that it doesnt have the case that the ghosts is in a blocked cell)
                     ghost_in_neighboring_cells = True
-            if ghost_in_neighboring_cells == False:
+            if ghost_in_neighboring_cells == False:         # If no ghosts in potential cell and its neighboring cell take that step
                 x2,y2 = point
                 path_taken_by_agent.append((x2,y2))
                 if grid[x2][y2] == 8 or grid[x2][y2] >= 10:         # Checking If Agent Dead 
                     return ("Failed")
-                elif grid[x2][y2] == 2:
+                elif grid[x2][y2] == 2:                             # Checking if Agent reached goal cell
                     globalVariables.success_count = globalVariables.success_count + 1
                     return("Success")
                 else:
-                    grid, ghosts_coordinate = ghosts.move_ghosts(grid,ghosts_coordinate)
+                    grid, ghosts_coordinate = ghosts.move_ghosts(grid,ghosts_coordinate) # Move ghosts
                     if grid[x2][y2] == 8 or grid[x2][y2] >= 10:         # Checking If Agent Dead 
                         return ("Failed")
-            else:
-                for new_x,new_y in (x2+1,y2),(x2-1,y2),(x2,y2+1),(x2,y2-1):
+            else:                                                         # If No cell found without ghosts in neighbor, than mark your neighboring cells as potential cell and check whether their neighboring cells have ghosts or not, If not take that step
+                for new_x,new_y in (x2+1,y2),(x2-1,y2),(x2,y2+1),(x2,y2-1): # Check wheather neighbor's of neighboring cells contains ghosts
                     if new_x < 0 or new_x > 50 or new_y < 0 or new_y > 50:
                         continue
                     if grid[new_x][new_y] == 0:
@@ -53,20 +53,20 @@ def agent4(no_of_ghosts):
                             if grid[neighbor_x][neighbor_y] == 8 or grid[neighbor_x][neighbor_y] >= 10:
                                 ghosts_neighbor = True
                                 break
-                        if ghosts_neighbor == False:
+                        if ghosts_neighbor == False:                        # If the above commented satisfies for any neighboring cells take that step
                             x2,y2 = new_x,new_y
                             if grid[x2][y2] == 8 or grid[x2][y2] >= 10:         # Checking If Agent Dead 
                                 return ("Failed")
                             elif grid[x2][y2] == 2:
-                                globalVariables.success_count = globalVariables.success_count + 1
+                                globalVariables.success_count = globalVariables.success_count + 1   # Check if agent reached goal cell
                                 return("Success")
                             else:
-                                grid, ghosts_coordinate = ghosts.move_ghosts(grid,ghosts_coordinate)
+                                grid, ghosts_coordinate = ghosts.move_ghosts(grid,ghosts_coordinate) # Move ghosts
                                 if grid[x2][y2] == 8 or grid[x2][y2] >= 10:         # Checking If Agent Dead 
                                     return ("Failed")
                         else:
                             while True:
-                                new_x,new_y = random.choice([(x2+1,y2),(x2-1,y2),(x2,y2+1),(x2,y2-1)])
+                                new_x,new_y = random.choice([(x2+1,y2),(x2-1,y2),(x2,y2+1),(x2,y2-1)])  # If both the above conditions fail choose any cell at random
                                 if new_x < 0 or new_x >= 51 or new_y < 0 or new_y >= 51:
                                     continue
                                 if grid[new_x][new_y] == 0:
@@ -76,11 +76,11 @@ def agent4(no_of_ghosts):
                             x2,y2 = new_x,new_y
                             if grid[x2][y2] == 8 or grid[x2][y2] >= 10:         # Checking If Agent Dead 
                                 return ("Failed")
-                            elif grid[x2][y2] == 2:
+                            elif grid[x2][y2] == 2:                               # Check if agent reached goal cell
                                 globalVariables.success_count = globalVariables.success_count + 1
                                 return("Success")
                             else:
-                                grid, ghosts_coordinate = ghosts.move_ghosts(grid,ghosts_coordinate)
+                                grid, ghosts_coordinate = ghosts.move_ghosts(grid,ghosts_coordinate) # Move ghosts
                                 if grid[x2][y2] == 8 or grid[x2][y2] >= 10:         # Checking If Agent Dead 
                                     return ("Failed")
                         break

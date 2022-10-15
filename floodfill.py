@@ -12,5 +12,3 @@ def flood_fill(maze,current):
 
     return(seen)
     
-# reachable = flood_fill(maze,(0,0))
-# print(reachable)
