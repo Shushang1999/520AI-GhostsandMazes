@@ -4,17 +4,37 @@ No of Mazes = 10
 Successfull tries = 2
 ['Hanged', 'Failed', 'Success', 'Hanged', 'Hanged', 'Hanged', 'Hanged', 'Success', 'Hanged', 'Hanged']
 Agent 3
+No of Ghosts = 6
+No of Mazes = 10
+Successfull tries = 3
+['Hanged', 'Success', 'Success', 'Hanged', 'Hanged', 'Hanged', 'Hanged', 'Success', 'Failed', 'Hanged']
+Agent 3
 No of Ghosts = 11
 No of Mazes = 10
 Successfull tries = 5
 ['Failed', 'Success', 'Failed', 'Success', 'Success', 'Hanged', 'Success', 'Success', 'Failed', 'Hanged']
+Agent 3
+No of Ghosts = 16
+No of Mazes = 10
+Successfull tries = 4
+['Failed', 'Success', 'Failed', 'Success', 'Success', 'Hanged', 'Success', 'Success', 'Failed', 'Success']
 Agent 3
 No of Ghosts = 21
 No of Mazes = 10
 Successfull tries = 2
 ['Failed', 'Failed', 'Success', 'Failed', 'Failed', 'Failed', 'Failed', 'Success', 'Failed', 'Failed']
 Agent 3
+No of Ghosts = 26
+No of Mazes = 10
+Successfull tries = 1
+['Failed', 'Failed', 'Failed', 'Success', 'Failed', 'Failed', 'Failed', 'Failed', 'Failed', 'Failed']
+Agent 3
 No of Ghosts = 31
+No of Mazes = 10
+Successfull tries = 0
+['Failed', 'Failed', 'Failed', 'Failed', 'Failed', 'Failed', 'Failed', 'Failed', 'Failed', 'Failed']
+Agent 3
+No of Ghosts = 36
 No of Mazes = 10
 Successfull tries = 0
 ['Failed', 'Failed', 'Failed', 'Failed', 'Failed', 'Failed', 'Failed', 'Failed', 'Failed', 'Failed']
@@ -24,12 +44,27 @@ No of Mazes = 10
 Successfull tries = 0
 ['Failed', 'Failed', 'Failed', 'Failed', 'Failed', 'Failed', 'Failed', 'Failed', 'Failed', 'Failed']
 Agent 3
+No of Ghosts = 46
+No of Mazes = 10
+Successfull tries = 0
+['Failed', 'Failed', 'Failed', 'Failed', 'Failed', 'Failed', 'Failed', 'Failed', 'Failed', 'Failed']
+Agent 3
 No of Ghosts = 51
 No of Mazes = 10
 Successfull tries = 0
 ['Failed', 'Failed', 'Failed', 'Failed', 'Failed', 'Failed', 'Failed', 'Failed', 'Failed', 'Failed']
 Agent 3
+No of Ghosts = 56
+No of Mazes = 10
+Successfull tries = 0
+['Failed', 'Failed', 'Failed', 'Failed', 'Failed', 'Failed', 'Failed', 'Failed', 'Failed', 'Failed']
+Agent 3
 No of Ghosts = 61
+No of Mazes = 10
+Successfull tries = 0
+['Failed', 'Failed', 'Failed', 'Failed', 'Failed', 'Failed', 'Failed', 'Failed', 'Failed', 'Failed']
+Agent 3
+No of Ghosts = 66
 No of Mazes = 10
 Successfull tries = 0
 ['Failed', 'Failed', 'Failed', 'Failed', 'Failed', 'Failed', 'Failed', 'Failed', 'Failed', 'Failed']
